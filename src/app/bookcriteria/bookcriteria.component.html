@@ -1,0 +1,37 @@
+<p>bookcriteria works!</p>
+<ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (valueChange)="filterBook()" ></ngx-slider>
+
+
+<select [(ngModel)]="authorname">
+
+    <option value="">Select Book </option>
+    <option value="Balaguru">Balaguru</option>
+    <option value="Y.Chavhan">Y.Chavhan</option>
+    <option value="Chetan Bhagat">Chetan Bhagat</option>
+    <option value="Bala">Bala</option>
+    
+</select><br><br>
+<button (click)="search()">SUBMIT</button>
+
+<table *ngIf = "books" border="1">
+    <tr >
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Autinty</th>
+        <th>AuthorName</th>
+        <th>BookAvailability</th>
+        
+    </tr>
+    <tr *ngFor = "let book of books">
+    
+        <td>{{book["id"]}}</td>
+        <td>{{book["name"]}}</td>
+        <td>{{book["price"]}}</td>
+        <td>{{book["qyantity"]}}</td>
+        <td>{{book["authorname"]}}</td>
+        <td>{{book["avalaibleind"]}}</td>
+        
+    </tr>
+    
+    </table>
