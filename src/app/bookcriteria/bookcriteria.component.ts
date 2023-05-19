@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Options,LabelType } from '@angular-slider/ngx-slider';
 import { BookService } from '../book.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-bookcriteria',
@@ -9,7 +9,7 @@ import { BookService } from '../book.service';
   styleUrls: ['./bookcriteria.component.css']
 })
 export class BookcriteriaComponent {
-  constructor(private bookService:BookService){ }
+  constructor(private bookService:BookService, private toastrService:ToastrService){ }
 
   authorname="";
   minValue: number = 50;
@@ -50,8 +50,10 @@ search(){
   console.log(this.authorname);
  
   this.bookService.searchBookByAuthorName(this.authorname,this.minValue,this.maxValue).subscribe(resp=>{
-    this.books=resp;
+    this.books=resp; 
+    this.toastrService.success("Response From API Is Success")
   },error=>{
+    this.toastrService.error("Could Not Get Response From Api")
     console.log(error);
   });
 }

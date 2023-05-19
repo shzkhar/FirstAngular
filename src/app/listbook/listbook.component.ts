@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { Options,LabelType } from '@angular-slider/ngx-slider';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-listbook',
   templateUrl: './listbook.component.html',
@@ -9,7 +9,7 @@ import { Options,LabelType } from '@angular-slider/ngx-slider';
 })
 export class ListbookComponent implements OnInit  {
 
- constructor(private bookService:BookService){ }
+ constructor(private bookService:BookService, private toastService:ToastrService){ }
  
  minValue: number = 50;
   maxValue: number = 5000;
@@ -50,7 +50,8 @@ deleteBook(bookId:any){
   console.log("BookId=>"+bookId);
     this.bookService.deleteBookById(bookId).subscribe(resp=>{
     this.books = this.books.filter(book=>book['bookId']!=bookId);
-    alert("Book Deleted"); 
+   // alert("Book Deleted"); 
+   this.toastService.success("Book Deleted Successfully") 
   })
 }
 

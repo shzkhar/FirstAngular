@@ -14,6 +14,8 @@ import { ListbookComponent } from './listbook/listbook.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { BookcriteriaComponent } from './bookcriteria/bookcriteria.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,9 @@ import { BookcriteriaComponent } from './bookcriteria/bookcriteria.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxSliderModule
+    NgxSliderModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
